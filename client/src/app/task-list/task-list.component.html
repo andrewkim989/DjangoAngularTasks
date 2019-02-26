@@ -1,0 +1,46 @@
+<div id = "tasklist">
+    <h3>Task List</h3>
+    <div class = "btn-group">
+        <button type = "button" class = "btn btn-secondary" (click) = "getEverything()">All</button>
+        <button type = "button" class = "btn btn-secondary" (click) = "getCompletedTasks()">Completed</button>
+        <button type = "button" class = "btn btn-secondary" (click) = "getActiveTasks()">Active</button>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th style = "width: 50%">Task</th>
+                <th style = "width: 25%">Status</th>
+                <th style = "width: 25%">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let task of tasks">
+                <td>{{ task.task }}</td>
+                <td>
+                    <div class="tags has-addons" (click)="changeStatusTwo(task)">
+                        <span *ngIf="task.isComplete" class="tag is-success">
+                            Completed
+                        </span>
+                        <span *ngIf="task.isComplete" class="tag is-light">
+                            <input type="checkbox" checked />
+                        </span>
+                        <span *ngIf="!task.isComplete" class="tag is-danger">
+                            Active
+                        </span>
+                        <span *ngIf="!task.isComplete" class="tag is-light">
+                            <input type="checkbox" />
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <button (click)="delete(task)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-box">
+    
+</div>

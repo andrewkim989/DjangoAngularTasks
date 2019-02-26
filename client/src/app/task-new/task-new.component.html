@@ -1,0 +1,15 @@
+<div id = "newtask">
+    <h4>Add a new task</h4>
+    <form (submit) = "createTaskTwo()" #taskData = "ngForm">
+        <span *ngIf = "task.invalid && (task.dirty || task.touched)" >
+            <span *ngIf = "task.errors.minlength">Not enough characters</span>
+        </span><br/>
+
+        <input type = "text" name = "task" [(ngModel)] = "newTask.task" placeholder = "Your task" 
+            #task = "ngModel" size = 40 ngModel required minlength = 3/>
+
+        <button type = "submit" class = "btn btn-success" [disabled] = "taskData.form.invalid">
+            Create Task</button><br/>
+        <span *ngIf = "error">{{data.error}}</span>
+    </form>
+</div>
